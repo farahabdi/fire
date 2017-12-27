@@ -1,0 +1,135 @@
+// Copyright (c) 2018 Nomad Media, Inc. All Rights Reserved.
+
+.list {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  overflow: auto;
+}
+
+.list--focus {
+  border-color: $focus-border-color;
+  box-shadow: 0 0 1px 1px $focus-border-color;
+}
+
+.list__more,
+.list__empty {
+  padding-left: $inuit-base-spacing-unit;
+  padding-right: $inuit-base-spacing-unit;
+  padding-top: halve($inuit-base-spacing-unit);
+  padding-bottom: halve($inuit-base-spacing-unit);
+}
+
+.list__empty {
+  color: $secondary-text-color;
+  font-style: italic;
+}
+
+.list-item {
+  max-width: none;
+}
+
+.list-item:focus {
+  outline: $focus-border-color solid 1px;
+}
+
+.list-item__image {
+  height: $inuit-base-spacing-unit;
+  width: $inuit-base-spacing-unit;
+  margin-right: $inuit-base-spacing-unit;
+  overflow: hidden;
+  flex: 0 0 auto;
+
+  img {
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+}
+
+.list-item__label,
+.list-item__annotation {
+  flex: 1;
+}
+
+.list-item__annotation {
+  margin-left: $inuit-base-spacing-unit;
+  color: $secondary-text-color;
+}
+
+.list-item--selectable {
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: $hover-background-color;
+  }
+}
+
+.list-item--selected {
+  background-color: $selected-background-color;
+  color: $selected-text-color;
+
+  #{$dark-background-context} {
+    background-color: $colored-active-background-color;
+    color: $active-colored-text-color;
+  }
+
+  #{$light-background-context} {
+    background-color: $selected-background-color;
+    color: $selected-text-color;
+  }
+}
+
+.list-item--row {
+  .list-item__annotation {
+    text-align: right;
+  }
+}
+
+.list--selectable {
+  outline: none;
+
+  .list-item {
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s;
+  }
+
+  .list-item--active,
+  .list-item:hover {
+    background-color: $hover-background-color;
+    color: $hover-text-color;
+
+    #{$dark-background-context} {
+      background-color: $colored-hover-background-color;
+      color: $active-colored-text-color;
+    }
+
+    #{$light-background-context} {
+      background-color: $hover-background-color;
+      color: $hover-text-color;
+    }
+  }
+}
+
+.list--small {
+  .list-item,
+  .list__more {
+    &__image {
+      height: halve($inuit-base-spacing-unit);
+      width: halve($inuit-base-spacing-unit);
+    }
+  }
+}
+
+.list--large {
+  .list-item,
+  .list__more {
+    &__image {
+      height: double($inuit-base-spacing-unit);
+      width: double($inuit-base-spacing-unit);
+    }
+  }
+}
